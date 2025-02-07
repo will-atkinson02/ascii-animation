@@ -1,0 +1,23 @@
+.ascii-animation-container {
+    display: grid;
+    grid-template-columns: repeat(50, 15px);
+    gap: 1px;
+    width: max-content;
+    background: #ddd;
+    height: 300px;
+}
+
+.animation-column {
+    display: grid;
+    grid-template-rows: repeat(20, 15px);
+}
+
+.block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    background: lightblue;
+    border: 1px solid #aaa;
+}
