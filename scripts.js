@@ -14,18 +14,22 @@ for (let i = 0; i < 50; i++) {
     }
 }
 
+let hashMap = {};
 
-const hashMap = {};
-
-for (let i = 0; i <= 50; i++) {
-    hashMap[i] = [0, 0];
+for (let i = 0; i < 50; i++) {
+    hashMap[i] = [0, 0].slice();
 }
 
 for (let i = 0; i < 50; i++) {
-    const bound1 = Math.floor((Math.random() * 20))
+    const bound1 = Math.floor((Math.random() * 16))
     hashMap[i][0] = bound1
 
-    const bound2 = bound1 + Math.floor((Math.random() * 10) + 4)
+    let bound2 = bound1 + Math.floor((Math.random() * 6))
+
+    if (bound2 <= 20) {
+        bound2 = 20 - bound2 
+    }
+
     hashMap[i][1] = bound2
 
     for (let j = bound1; j < bound2; j++) {
@@ -33,11 +37,10 @@ for (let i = 0; i < 50; i++) {
     }
 }
 
-setInterval(doThing, 1000);
+setInterval(doThing, 50);
 
 function doThing() {
     for (let i = 0; i < 50; i++) {
-
         if (hashMap[i][0] == 20) {
             hashMap[i][0] = 0
         }
@@ -47,12 +50,12 @@ function doThing() {
         }
         
         if (hashMap[i][0] < 20) {
-            animationContainer.querySelectorAll(".animation-column")[0].querySelectorAll(".block")[hashMap[i][0]].style.color = "greenyellow"
+            animationContainer.querySelectorAll(".animation-column")[i].querySelectorAll(".block")[hashMap[i][0]].style.color = "greenyellow"
             hashMap[i][0]++
         }
     
         if (hashMap[i][1] < 20) {
-            animationContainer.querySelectorAll(".animation-column")[0].querySelectorAll(".block")[hashMap[i][1]].style.color = "black"
+            animationContainer.querySelectorAll(".animation-column")[i].querySelectorAll(".block")[hashMap[i][1]].style.color = "black"
             hashMap[i][1]++
         }
     }
